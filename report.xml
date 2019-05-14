@@ -144,27 +144,27 @@ Cell Zone Conditions
 
       yashi
 
-         Condition                         Value                                                                                                                                                                                                                    
-         --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-         Specify source terms?             yes                                                                                                                                                                                                                      
-         Source Terms                      ((mass) (x-momentum) (y-momentum) (z-momentum) (k) (epsilon) (species-0 ((profile udf gas) (inactive . #f) (constant . 0))) (species-1 ((inactive . #f) (constant . 0) (profile  ))) (species-2) (species-3) (energy))   
-         Frame Motion?                     no                                                                                                                                                                                                                       
-         Laminar zone?                     yes                                                                                                                                                                                                                      
-         Porous zone?                      yes                                                                                                                                                                                                                      
-         Direction-1 Viscous Resistance    (profile udf nianxing_x)                                                                                                                                                                                                 
-         Direction-2 Viscous Resistance    (profile udf nianxing_y)                                                                                                                                                                                                 
-         Direction-3 Viscous Resistance    (profile udf nianxing_z)                                                                                                                                                                                                 
-         Direction-1 Inertial Resistance   (profile udf guanxing)                                                                                                                                                                                                   
-         Direction-2 Inertial Resistance   (profile udf guanxing)                                                                                                                                                                                                   
-         Direction-3 Inertial Resistance   (profile udf guanxing)                                                                                                                                                                                                   
-         Porosity                          (profile udf porous_profile)                                                                                                                                                                                             
+         Condition                         Value                                                                                                                                                                                                                                     
+         -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         Specify source terms?             yes                                                                                                                                                                                                                                       
+         Source Terms                      ((mass) (x-momentum) (y-momentum) (z-momentum) (k) (epsilon) (species-0 ((profile udf gas) (inactive . #f) (constant . 0))) (species-1 ((profile udf o2_consumption) (inactive . #f) (constant . 0))) (species-2) (species-3) (energy))   
+         Frame Motion?                     no                                                                                                                                                                                                                                        
+         Laminar zone?                     yes                                                                                                                                                                                                                                       
+         Porous zone?                      yes                                                                                                                                                                                                                                       
+         Direction-1 Viscous Resistance    (profile udf nianxing_x)                                                                                                                                                                                                                  
+         Direction-2 Viscous Resistance    (profile udf nianxing_y)                                                                                                                                                                                                                  
+         Direction-3 Viscous Resistance    (profile udf nianxing_z)                                                                                                                                                                                                                  
+         Direction-1 Inertial Resistance   (profile udf guanxing)                                                                                                                                                                                                                    
+         Direction-2 Inertial Resistance   (profile udf guanxing)                                                                                                                                                                                                                    
+         Direction-3 Inertial Resistance   (profile udf guanxing)                                                                                                                                                                                                                    
+         Porosity                          (profile udf porous_profile)                                                                                                                                                                                                              
 
       gongzuomian
 
          Condition               Value                                                                                                                                                                     
          -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
          Specify source terms?   yes                                                                                                                                                                       
-         Source Terms            ((mass) (x-momentum) (y-momentum) (z-momentum) (k) (epsilon) (species-0 ((constant . 3e-05) (inactive . #f) (profile  ))) (species-1) (species-2) (species-3) (energy))   
+         Source Terms            ((mass) (x-momentum) (y-momentum) (z-momentum) (k) (epsilon) (species-0 ((constant . 2e-05) (inactive . #f) (profile  ))) (species-1) (species-2) (species-3) (energy))   
          Frame Motion?           no                                                                                                                                                                        
 
       fumei
@@ -208,42 +208,80 @@ Boundary Conditions
 
    Zones
 
-      name                                                         id   type             
-      --------------------------------------------------------------------------------
-      outlet                                                       19   outflow          
-      wall-44                                                      44   wall             
-      wall-43                                                      43   wall             
-      wall-42                                                      42   wall             
-      wall-41                                                      41   wall             
-      wall-37                                                      37   wall             
-      wall-36                                                      36   wall             
-      wall-34                                                      34   wall             
-      wall-33                                                      33   wall             
-      wall-31                                                      31   wall             
-      wall-30                                                      30   wall             
-      wall-liexi                                                   1    wall             
-      wall-yashi                                                   2    wall             
-      wall-gongzuomian                                             3    wall             
-      wall-fumei                                                   4    wall             
-      wall-zaihe                                                   5    wall             
-      inlet                                                        18   velocity-inlet   
-      contact_region_4-src                                         20   interface        
-      contact_region_4-trg                                         21   interface        
-      interface-contact_region_5-src                               22   interface        
-      contact_region_5-trg                                         23   interface        
-      contact_region_6-src                                         24   interface        
-      contact_region_6-trg                                         25   interface        
-      contact_region-contact_region_2-contact_region_3-src         26   interface        
-      contact_region-contact_region_2-contact_region_3-trg-yashi   27   interface        
-      contact_region-contact_region_2-contact_region_3-trg-fumei   28   interface        
-      contact_region-contact_region_2-contact_region_3-trg-zaihe   29   interface        
+      name                                                         id   type              
+      ---------------------------------------------------------------------------------
+      outlet                                                       19   pressure-outlet   
+      outlet_kong                                                  22   pressure-outlet   
+      wall-47                                                      47   wall              
+      wall-46                                                      46   wall              
+      wall-45                                                      45   wall              
+      wall-44                                                      44   wall              
+      wall-40                                                      40   wall              
+      wall-39                                                      39   wall              
+      wall-37                                                      37   wall              
+      wall-36                                                      36   wall              
+      wall-34                                                      34   wall              
+      wall-33                                                      33   wall              
+      wall-liexi                                                   1    wall              
+      wall-yashi                                                   2    wall              
+      wall-gongzuomian                                             3    wall              
+      wall-fumei                                                   4    wall              
+      wall-zaihe                                                   5    wall              
+      inlet                                                        18   velocity-inlet    
+      wall_kong-liexi                                              20   wall              
+      wall_kong-zaihe                                              21   wall              
+      contact_region_4-src                                         23   interface         
+      contact_region_4-trg                                         24   interface         
+      interface-contact_region_5-src                               25   interface         
+      contact_region_5-trg                                         26   interface         
+      contact_region_6-src                                         27   interface         
+      contact_region_6-trg                                         28   interface         
+      contact_region-contact_region_2-contact_region_3-src         29   interface         
+      contact_region-contact_region_2-contact_region_3-trg-yashi   30   interface         
+      contact_region-contact_region_2-contact_region_3-trg-fumei   31   interface         
+      contact_region-contact_region_2-contact_region_3-trg-zaihe   32   interface         
 
    Setup Conditions
 
       outlet
 
-         Condition   Value   
-         -----------------
+         Condition                                         Value                                                                                                                   
+         -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         Backflow                                          (((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+         Specify targeted mass flow rate                   yes                                                                                                                     
+         Targeted mass flow (kg/s)                         0.0358                                                                                                                  
+         Upper Limit of Absolute Pressure Value (pascal)   5000000                                                                                                                 
+         Lower Limit of Absolute Pressure Value (pascal)   1                                                                                                                       
+
+      outlet_kong
+
+         Condition   Value                                                                                                                   
+         ---------------------------------------------------------------------------------------------------------------------------------
+         Backflow    (((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+
+      wall-47
+
+         Condition                  Value   
+         --------------------------------
+         Thermal BC Type            1       
+         Wall Motion                0       
+         Shear Boundary Condition   0       
+
+      wall-46
+
+         Condition                  Value   
+         --------------------------------
+         Thermal BC Type            1       
+         Wall Motion                0       
+         Shear Boundary Condition   0       
+
+      wall-45
+
+         Condition                  Value   
+         --------------------------------
+         Thermal BC Type            1       
+         Wall Motion                0       
+         Shear Boundary Condition   0       
 
       wall-44
 
@@ -253,7 +291,7 @@ Boundary Conditions
          Wall Motion                0       
          Shear Boundary Condition   0       
 
-      wall-43
+      wall-40
 
          Condition                  Value   
          --------------------------------
@@ -261,15 +299,7 @@ Boundary Conditions
          Wall Motion                0       
          Shear Boundary Condition   0       
 
-      wall-42
-
-         Condition                  Value   
-         --------------------------------
-         Thermal BC Type            1       
-         Wall Motion                0       
-         Shear Boundary Condition   0       
-
-      wall-41
+      wall-39
 
          Condition                  Value   
          --------------------------------
@@ -302,22 +332,6 @@ Boundary Conditions
          Shear Boundary Condition   0       
 
       wall-33
-
-         Condition                  Value   
-         --------------------------------
-         Thermal BC Type            1       
-         Wall Motion                0       
-         Shear Boundary Condition   0       
-
-      wall-31
-
-         Condition                  Value   
-         --------------------------------
-         Thermal BC Type            1       
-         Wall Motion                0       
-         Shear Boundary Condition   0       
-
-      wall-30
 
          Condition                  Value   
          --------------------------------
@@ -367,10 +381,26 @@ Boundary Conditions
 
       inlet
 
-         Condition                  Value                                                                                                                     
-         --------------------------------------------------------------------------------------------------------------------------------------------------
-         Velocity Magnitude (m/s)   2.3                                                                                                                       
-                                    (((constant . 0) (profile  )) ((constant . 0.2) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+         Condition                  Value                                                                                                                   
+         ------------------------------------------------------------------------------------------------------------------------------------------------
+         Velocity Magnitude (m/s)   2.1                                                                                                                     
+                                    (((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+
+      wall_kong-liexi
+
+         Condition                  Value   
+         --------------------------------
+         Thermal BC Type            1       
+         Wall Motion                0       
+         Shear Boundary Condition   0       
+
+      wall_kong-zaihe
+
+         Condition                  Value   
+         --------------------------------
+         Thermal BC Type            1       
+         Wall Motion                0       
+         Shear Boundary Condition   0       
 
       contact_region_4-src
 
@@ -450,18 +480,18 @@ Solver Settings
 
       Variable                     Relaxation Factor   
       ----------------------------------------------
-      Pressure                     0.2                 
+      Pressure                     0.3                 
       Density                      1                   
       Body Forces                  1                   
       Momentum                     0.7                 
       Turbulent Kinetic Energy     0.8                 
       Turbulent Dissipation Rate   0.8                 
       Turbulent Viscosity          1                   
-      ch4                          0.5                 
-      o2                           0.5                 
+      ch4                          1                   
+      o2                           1                   
       co2                          1                   
       h2o                          1                   
-      Energy                       0.1                 
+      Energy                       1                   
 
    Linear Solver
 

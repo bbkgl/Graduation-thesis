@@ -27,7 +27,7 @@ DEFINE_PROFILE(porous_profile, thread, position)
 	real r[ND_ND];
 	real x, y, z, value;
 	cell_t c;
-	printf("Load success!----%s\n", TIMESTAMP);
+	// printf("Load success!----%s\n", TIMESTAMP);
 	begin_c_loop(c, thread)
 	{
 		C_CENTROID(r, c, thread);
@@ -158,4 +158,23 @@ DEFINE_SOURCE(o2_consumption, cell,thread,dS,i)/*defining source of oxygen consu
 		R = 0; 
 	} 
 	return R;/*oxygen consumption rate in porous media*/
+}
+
+// 瓦斯抽采量
+DEFINE_PROFILE(nianxing_y, thread, position) 
+{
+	real r[ND_ND];
+	real x, y, z, shentoulv, n;
+	cell_t c;
+	begin_c_loop(c, thread)
+	{
+		C_CENTROID(r, c, thread);
+		x = r[0];
+		y = r[1];
+		z = r[2];
+		n = porous(x, y, z);
+		shentoulv = (DP * DP * pow(n, 3)) / (150 * pow(1 - n, 2));
+		C_PROFILE(c, thread, position) = 10 / shentoulv;
+	}
+	end_c_loop(c, thread)
 }

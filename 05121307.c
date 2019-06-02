@@ -1,7 +1,7 @@
 #include "udf.h"
 
 #define X_L 400          // 采空区模型的长度
-#define L 50             // 基本顶破碎长度
+#define L 15             // 基本顶破碎长度
 #define Y_L 260          // 工作面宽度
 #define DP 0.11          // 平均粒径
 #define TIMESTAMP "05122035"   // 时间戳
